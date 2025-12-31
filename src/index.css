@@ -1,0 +1,973 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* TECHNICAL LUXURY PALETTE - Advanced Clinical */
+    --ivory: 60 10% 94%;
+    /* #f2f2eb - Cool technical off-white */
+    --sand: 35 15% 90%;
+    /* Less yellow, more neutral */
+    --graphite: 240 3% 6%;
+    /* #0f0f10 - The Hero Background */
+    --graphite-deep: 240 3% 4%;
+    /* Slightly darker for depth */
+
+    /* Technical Accents (Desaturated) */
+    --sage-deep: 145 10% 40%;
+    /* Tech Green */
+    --sage-light: 145 10% 60%;
+    --sage-glow: 145 15% 75%;
+
+    /* Luxury Accents */
+    --champagne: 38 20% 70%;
+    /* Muted Gold/Silver */
+    --champagne-light: 38 25% 85%;
+
+    /* Semantic Tokens */
+    --background: var(--graphite);
+    /* Default to dark for continuity */
+    --foreground: var(--ivory);
+
+    --card: var(--graphite-deep);
+    --card-foreground: var(--ivory);
+
+    --popover: var(--graphite-deep);
+    --popover-foreground: var(--ivory);
+
+    --primary: var(--ivory);
+    /* Primary action is now white/light */
+    --primary-foreground: var(--graphite);
+
+    --secondary: var(--graphite-deep);
+    --secondary-foreground: var(--ivory);
+
+    --muted: 240 3% 20%;
+    --muted-foreground: 240 2% 60%;
+
+    --accent: var(--champagne);
+    --accent-foreground: var(--graphite);
+
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 3% 15%;
+    /* Subtle dark borders */
+    --input: 240 3% 15%;
+    --ring: var(--ivory);
+
+    --radius: 0.25rem;
+    /* Sharper corners for tech feel */
+
+    /* Clinical Shadows */
+    --shadow-clinical: 0 4px 20px -4px rgba(0, 0, 0, 0.5);
+    --shadow-elevated: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
+    --shadow-deep: 0 20px 60px -15px rgba(0, 0, 0, 0.9);
+    --shadow-glow-sage: 0 0 40px rgba(255, 255, 255, 0.05);
+    --shadow-glow-champagne: 0 0 40px rgba(200, 190, 170, 0.1);
+  }
+
+  .dark {
+    --background: var(--graphite-deep);
+    --foreground: var(--ivory);
+    --card: 0 0% 7%;
+    --card-foreground: var(--ivory);
+    --primary: var(--sage-light);
+    --primary-foreground: var(--graphite);
+    --border: 0 0% 15%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+  }
+}
+
+@layer components {
+
+  /* ============================================
+     CONTAINER SYSTEM
+  ============================================ */
+  .container-clinical {
+    @apply max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .container-narrow {
+    @apply max-w-[960px] mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .container-wide {
+    @apply max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  /* ============================================
+     SECTION RHYTHM
+  ============================================ */
+  .section-hero {
+    @apply min-h-screen flex items-center relative;
+  }
+
+  .section-massive {
+    @apply py-32 sm:py-40 md:py-48 lg:py-56;
+  }
+
+  .section-deep {
+    @apply py-24 sm:py-32 md:py-40 lg:py-48;
+  }
+
+  .section-standard {
+    @apply py-20 sm:py-28 md:py-36;
+  }
+
+  /* ============================================
+     CLINICAL GLASS EFFECTS
+  ============================================ */
+  .glass-clinical {
+    background: linear-gradient(145deg,
+        hsl(0 0% 100% / 0.92) 0%,
+        hsl(var(--sand) / 0.88) 100%);
+    backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid hsl(0 0% 100% / 0.6);
+    box-shadow:
+      var(--shadow-clinical),
+      inset 0 1px 0 hsl(0 0% 100% / 0.5);
+  }
+
+  .glass-dark-clinical {
+    background: linear-gradient(145deg,
+        hsl(0 0% 10% / 0.96) 0%,
+        hsl(0 0% 6% / 0.98) 100%);
+    backdrop-filter: blur(32px) saturate(180%);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    box-shadow:
+      var(--shadow-deep),
+      inset 0 1px 0 hsl(0 0% 100% / 0.05);
+  }
+
+  /* ============================================
+     CLINICAL CARDS
+  ============================================ */
+  .card-clinical {
+    @apply relative overflow-hidden;
+    background: linear-gradient(165deg,
+        hsl(0 0% 100%) 0%,
+        hsl(var(--sand) / 0.5) 100%);
+    border: 1px solid hsl(var(--border) / 0.6);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-clinical);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-clinical::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        hsl(var(--primary) / 0) 0%,
+        hsl(var(--primary) / 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+
+  .card-clinical:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: var(--shadow-elevated), var(--shadow-glow-sage);
+    transform: translateY(-4px);
+  }
+
+  .card-clinical:hover::before {
+    opacity: 1;
+  }
+
+  .card-clinical-dark {
+    @apply relative overflow-hidden;
+    background: linear-gradient(165deg,
+        hsl(0 0% 12%) 0%,
+        hsl(0 0% 8%) 100%);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-deep);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-clinical-dark:hover {
+    border-color: hsl(var(--sage-light) / 0.4);
+    transform: translateY(-4px);
+  }
+
+  /* ============================================
+     CLINICAL BUTTONS
+  ============================================ */
+  .btn-clinical {
+    @apply relative inline-flex items-center justify-center gap-3 px-10 py-5 font-semibold text-base rounded-xl overflow-hidden;
+    background: linear-gradient(145deg,
+        hsl(var(--primary)) 0%,
+        hsl(145 20% 32%) 100%);
+    color: white;
+    box-shadow:
+      var(--shadow-clinical),
+      0 0 0 1px hsl(0 0% 100% / 0.1) inset;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: 0.01em;
+  }
+
+  .btn-clinical::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg,
+        hsl(0 0% 100% / 0.15) 0%,
+        transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .btn-clinical::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(145deg,
+        hsl(var(--sage-glow)) 0%,
+        hsl(var(--champagne-light)) 100%);
+    opacity: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transition: opacity 0.5s;
+    filter: blur(20px);
+  }
+
+  .btn-clinical:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-elevated), var(--shadow-glow-sage);
+  }
+
+  .btn-clinical:hover::before {
+    opacity: 1;
+  }
+
+  .btn-clinical:hover::after {
+    opacity: 0.5;
+  }
+
+  .btn-clinical:active {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  .btn-clinical-outline {
+    @apply relative inline-flex items-center justify-center gap-3 px-8 py-4 font-medium text-base rounded-xl;
+    border: 2px solid hsl(var(--primary) / 0.4);
+    color: hsl(var(--foreground));
+    background: transparent;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-clinical-outline:hover {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* ============================================
+     CLINICAL LINES & DECORATIONS
+  ============================================ */
+  .line-vertical-active {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        hsl(var(--primary)) 20%,
+        hsl(var(--primary)) 80%,
+        transparent 100%);
+  }
+
+  .line-horizontal-active {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(var(--primary) / 0.5) 20%,
+        hsl(var(--primary) / 0.5) 80%,
+        transparent 100%);
+  }
+
+  .grid-clinical {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%);
+  }
+
+  .hud-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: hsl(var(--primary) / 0.4);
+    border-style: solid;
+  }
+
+  .hud-corner-tl {
+    top: 0;
+    left: 0;
+    border-width: 2px 0 0 2px;
+  }
+
+  .hud-corner-tr {
+    top: 0;
+    right: 0;
+    border-width: 2px 2px 0 0;
+  }
+
+  .hud-corner-bl {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 2px 2px;
+  }
+
+  .hud-corner-br {
+    bottom: 0;
+    right: 0;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* ============================================
+     CLINICAL HALOS
+  ============================================ */
+  .halo-clinical {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .halo-clinical-sage {
+    background: radial-gradient(circle,
+        hsl(var(--sage-glow) / 0.6) 0%,
+        hsl(var(--sage-deep) / 0.3) 50%,
+        transparent 70%);
+  }
+
+  .halo-clinical-champagne {
+    background: radial-gradient(circle,
+        hsl(var(--champagne-light) / 0.5) 0%,
+        hsl(var(--champagne) / 0.2) 50%,
+        transparent 70%);
+  }
+
+  .halo-clinical-gradient {
+    background: conic-gradient(from 180deg,
+        hsl(var(--sage-deep) / 0.3) 0deg,
+        hsl(var(--champagne) / 0.2) 120deg,
+        hsl(var(--sage-light) / 0.25) 240deg,
+        hsl(var(--sage-deep) / 0.3) 360deg);
+  }
+
+  /* ============================================
+     PILLS & TAGS
+  ============================================ */
+  .pill-clinical {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.15em];
+    background: linear-gradient(135deg,
+        hsl(var(--primary) / 0.12) 0%,
+        hsl(var(--primary) / 0.06) 100%);
+    border: 1px solid hsl(var(--primary) / 0.25);
+    border-radius: 100px;
+    color: hsl(var(--primary));
+  }
+
+  .pill-clinical-dark {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.15em];
+    background: linear-gradient(135deg,
+        hsl(var(--sage-light) / 0.15) 0%,
+        hsl(var(--sage-light) / 0.08) 100%);
+    border: 1px solid hsl(var(--sage-light) / 0.3);
+    border-radius: 100px;
+    color: hsl(var(--sage-light));
+  }
+
+  /* ============================================
+     GRAIN OVERLAY
+  ============================================ */
+  .grain-clinical {
+    position: relative;
+  }
+
+  .grain-clinical::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+}
+
+@layer utilities {
+
+  /* ============================================
+     TYPOGRAPHY DOMINANTE
+  ============================================ */
+  .text-hero-massive {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  .text-hero {
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+  }
+
+  .text-display {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+  }
+
+  .text-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+
+  .text-body-xl {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.7;
+  }
+
+  .text-body-lg {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.75;
+  }
+
+  .text-label {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ============================================
+     GRADIENT TEXT
+  ============================================ */
+  .text-gradient-clinical {
+    background: linear-gradient(135deg,
+        hsl(var(--sage-deep)) 0%,
+        hsl(var(--sage-light)) 50%,
+        hsl(var(--champagne)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-light {
+    background: linear-gradient(135deg,
+        hsl(var(--sage-light)) 0%,
+        hsl(var(--sage-glow)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ============================================
+     FOCUS STATES
+  ============================================ */
+  .focus-clinical {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* ============================================
+   KEYFRAMES & ANIMATIONS
+============================================ */
+@keyframes fadeUpClinical {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInClinical {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleInClinical {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawLineClinical {
+  from {
+    stroke-dashoffset: 100%;
+    opacity: 0.3;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pulseClinical {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floatClinical {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmerPremium {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes revealMask {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes borderGlow {
+
+  0%,
+  100% {
+    border-color: hsl(var(--border) / 0.5);
+    box-shadow: 0 0 0 hsl(var(--primary) / 0);
+  }
+
+  50% {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.15);
+  }
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes imageReveal {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+    filter: blur(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-up-clinical {
+  animation: fadeUpClinical 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-clinical {
+  animation: fadeInClinical 0.7s ease-out forwards;
+}
+
+.animate-scale-in-clinical {
+  animation: scaleInClinical 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-left {
+  animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-right {
+  animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-draw-line-clinical {
+  animation: drawLineClinical 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-clinical {
+  animation: pulseClinical 5s ease-in-out infinite;
+}
+
+.animate-float-clinical {
+  animation: floatClinical 8s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotateSlow 60s linear infinite;
+}
+
+.animate-scan-line {
+  animation: scanLine 4s ease-in-out infinite;
+}
+
+.animate-shimmer-premium {
+  animation: shimmerPremium 3s ease-in-out infinite;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      hsl(0 0% 100% / 0.1) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+}
+
+.animate-reveal-mask {
+  animation: revealMask 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.animate-text-reveal {
+  animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-image-reveal {
+  animation: imageReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* ============================================
+   PREMIUM MICRO-INTERACTIONS
+============================================ */
+.hover-lift {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.hover-glow {
+  transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 40px hsl(var(--primary) / 0.2);
+}
+
+.hover-scale-subtle {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-scale-subtle:hover {
+  transform: scale(1.02);
+}
+
+.hover-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+      transparent 40%,
+      hsl(0 0% 100% / 0.15) 50%,
+      transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-shine:hover::before {
+  transform: translateX(100%);
+}
+
+.hover-border-glow {
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hover-border-glow:hover {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.15);
+}
+
+/* Image reveal on scroll */
+.image-reveal {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(10px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-reveal.in-view {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Text stagger reveal */
+.text-stagger>* {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-stagger.in-view>*:nth-child(1) {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-stagger.in-view>*:nth-child(2) {
+  transition-delay: 80ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-stagger.in-view>*:nth-child(3) {
+  transition-delay: 160ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-stagger.in-view>*:nth-child(4) {
+  transition-delay: 240ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-stagger.in-view>*:nth-child(5) {
+  transition-delay: 320ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth section transitions */
+.section-transition {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-transition.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Magnetic button effect base */
+.magnetic-button {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Underline animation */
+.underline-reveal {
+  position: relative;
+}
+
+.underline-reveal::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.underline-reveal:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Smooth scroll snap for sections */
+.scroll-snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Premium focus states */
+.focus-premium:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--background)),
+    0 0 0 4px hsl(var(--primary) / 0.5);
+}
