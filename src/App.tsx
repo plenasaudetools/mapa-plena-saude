@@ -31,7 +31,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <SplashScreen isVisible={isLoading} />
-        <BrowserRouter>
+        <BrowserRouter basename="/mapa">
           <CookieConsent />
           <Routes>
             <Route path="/" element={<Index />} />

@@ -13,7 +13,7 @@ async function hardRefreshIfNewDeployDetected() {
     const currentBundlePath = new URL(import.meta.url).pathname;
 
     // Bypass caches by varying the query string
-    const res = await fetch(`/?__v=${Date.now()}`, { cache: "no-store" });
+    const res = await fetch(`${import.meta.env.BASE_URL}?__v=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) return;
 
     const html = await res.text();
