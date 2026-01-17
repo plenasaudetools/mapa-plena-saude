@@ -64,7 +64,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="block"
             >
-              Ciclo Facial Completo · Estética Avançada
+              Saúde Integrada · Estética & Bem-estar
             </motion.span>
           </motion.div>
 
@@ -73,25 +73,25 @@ export function HeroSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
-            className="font-display text-5xl lg:text-[7rem] leading-[1] tracking-tight mb-8 text-[#e2e2e2]"
+            className="font-display text-5xl lg:text-[7rem] leading-[1] tracking-tight mb-8 text-[#f2f2eb]"
           >
-            Quando existe <br />
-            <span className="font-serif italic text-[#d4c5a8] brightness-110">método</span>, <br />
-            a pele responde.
+            Beleza é a <br />
+            <span className="font-serif italic text-[#d4c5a8] brightness-110">assinatura</span> da <br />
+            sua saúde.
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Subheadline - Mantendo a copy aprovada */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="text-lg lg:text-xl font-light text-[#9ca3af] max-w-md leading-relaxed mb-10"
+            className="text-lg lg:text-xl font-normal text-[#e2e2e2] max-w-lg leading-relaxed mb-10"
           >
-            Sessões isoladas não constroem resultado. <br />
-            <span className="text-[#d8d8d8]">Ciclos bem conduzidos, sim.</span>
+            Uma abordagem 360º que une estética e bem-estar. <br />
+            <span className="text-[#d8d8d8] font-medium">Não tratamos apenas sua pele, cuidamos de você por inteiro.</span>
           </motion.p>
 
-          {/* CTA Area */}
+          {/* CTA Area with New Golden Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -102,16 +102,15 @@ export function HeroSection() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-8 py-4 overflow-hidden border border-white/20 hover:border-white/40 transition-colors duration-500"
+              className="btn-gold px-6 lg:px-10 py-4 rounded-xl lg:rounded-full"
             >
-              <div className="absolute inset-0 w-0 bg-white/5 transition-all duration-[250ms] ease-out group-hover:w-full" />
-              <span className="relative text-sm tracking-[0.15em] uppercase font-medium text-white group-hover:text-white">
-                Realizar Avaliação
+              <span className="relative z-10 text-sm whitespace-nowrap">
+                Iniciar Jornada de Cuidado
               </span>
             </a>
 
-            <span className="text-[10px] font-mono text-[#525252] tracking-wider ml-1">
-              Contato com equipe · Agenda limitada
+            <span className="text-[11px] font-mono text-[#a3a3a3] tracking-wider ml-2 mt-2">
+              Atendimento Clínico · Saúde & Autoestima
             </span>
           </motion.div>
         </div>

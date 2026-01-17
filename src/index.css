@@ -113,6 +113,52 @@
   }
 }
 
+/* --- Golden Button Premium --- */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #d4c5a8 0%, #f2f2eb 50%, #d4c5a8 100%);
+  color: #0f0f10;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 197, 168, 0.2);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 197, 168, 0.4);
+  filter: brightness(1.1);
+}
+
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: translateX(-150%);
+  animation: shimmer 3s infinite;
+}
+
 @layer components {
 
   /* ============================================

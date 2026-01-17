@@ -70,7 +70,7 @@ export function Footer() {
           {/* Navigation */}
           <div className="space-y-4 flex flex-col items-center md:items-start w-full">
             <h4 className="text-[10px] font-mono uppercase tracking-widest text-white/30">
-              Index
+              Links Úteis
             </h4>
             <nav className="flex flex-col gap-2 items-center md:items-start">
               {navItems.map((item) => (
@@ -103,17 +103,14 @@ export function Footer() {
               >
                 Privacidade
               </Link>
-              <span className="text-xs text-white/30 mt-2 leading-relaxed text-center md:text-left">
-                Responsável Técnico: <br /> Dra. Fulana de Tal <br /> CRBM 12345
-              </span>
             </nav>
           </div>
 
 
-        </div>
+        </div >
 
         {/* System Status / Copyright */}
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/20 font-mono uppercase tracking-widest text-center md:text-left">
+        < div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/20 font-mono uppercase tracking-widest text-center md:text-left" >
           <p>
             © 2026 Plena Saúde.
           </p>
@@ -122,8 +119,8 @@ export function Footer() {
             <span className="opacity-50">Desenvolvido por:</span>
             <img src={logoPontoUm} alt=".1 digital" className="h-5 w-auto opacity-70 hover:opacity-100 transition-opacity" />
           </div>
-        </div>
-      </div>
-    </footer>
+        </div >
+      </div >
+    </footer >
   );
 }

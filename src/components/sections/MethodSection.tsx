@@ -5,20 +5,20 @@ import { ScanLine, Zap, RefreshCw, ArrowRight } from 'lucide-react';
 const phases = [
   {
     id: "01",
-    title: "Mapeamento & Preparo",
-    desc: "Análise biométrica da estrutura facial e fortificação da barreira cutânea.",
+    title: "Diagnóstico Integral",
+    desc: "Análise profunda da sua bioimpedância, saúde e estrutura facial.",
     icon: ScanLine,
   },
   {
     id: "02",
-    title: "Intervenção Ativa",
-    desc: "Aplicação tecnológica de precisão para estímulo profundo de colágeno.",
+    title: "Cuidado Ativo",
+    desc: "Tratamentos que recuperam a vitalidade e estimulam a saúde da pele.",
     icon: Zap,
   },
   {
     id: "03",
-    title: "Regeneração Contínua",
-    desc: "Cicatrização guiada e home-care para maximizar o efeito do ciclo.",
+    title: "Longevidade",
+    desc: "Manutenção do bem-estar e naturalidade para resultados duradouros.",
     icon: RefreshCw,
   },
 ];
@@ -80,12 +80,12 @@ export function MethodSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-[10px] font-mono uppercase tracking-widest text-black/40 mb-4 block">
-              Arquitetura do Tratamento
+            <span className="text-[10px] font-mono uppercase tracking-widest text-black/50 mb-4 block">
+              Uma abordagem 360º
             </span>
             <h2 className="text-4xl lg:text-5xl font-display text-[#0f0f10] leading-tight">
-              Não é mágica. <br />
-              <span className="font-serif italic text-black/60">É engenharia biológica.</span>
+              Saúde Plena <br />
+              <span className="font-serif italic text-black/60">& Estética.</span>
             </h2>
           </motion.div>
 
@@ -93,9 +93,9 @@ export function MethodSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.4, duration: 1 }}
-            className="max-w-md text-black/60 text-sm leading-relaxed border-l border-black/10 pl-6"
+            className="max-w-md text-black/70 text-sm leading-relaxed border-l border-black/10 pl-6 font-medium"
           >
-            Nosso protocolo ignora soluções paliativas. Construímos resultados através de um ciclo trifásico desenhado para respeitar a fisiologia da sua pele.
+            Nosso protocolo une saúde e beleza. Construímos resultados duradouros cuidando de você de dentro para fora, respeitando sua fisiologia.
           </motion.div>
         </div>
 

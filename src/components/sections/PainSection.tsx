@@ -5,10 +5,10 @@ import { ArrowRight, AlertCircle, Plus } from 'lucide-react';
 const WHATSAPP_LINK = "https://wa.me/5513988595323?text=Oi!%20Quero%20realizar%20a%20avalia%C3%A7%C3%A3o%20do%20Ciclo%20Facial%20Completo%20da%20Plena%20Sa%C3%BAde.";
 
 const painPoints = [
-  'Viço que desaparece',
-  'Textura irregular',
-  'Manchas reincidentes',
-  'Inflamação silenciosa',
+  'Aspecto de cansaço crônico',
+  'Perda de vitalidade e brilho',
+  'Sinais de inflamação interna',
+  'Desequilíbrio na renovação celular',
 ];
 
 export function PainSection() {
@@ -46,18 +46,18 @@ export function PainSection() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-2 bg-red-500/80 rounded-full animate-pulse" />
-                <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">
-                  Análise de Cenário
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#d4c5a8]">
+                  Análise Integral
                 </span>
               </div>
 
               <h2 className="text-3xl lg:text-5xl font-display leading-[1.1] mb-6 lg:mb-8 text-white">
-                Você faz de tudo. <br />
-                <span className="text-white/40">E a pele volta.</span>
+                O corpo sinaliza. <br />
+                <span className="text-[#a3a3a3]">A pele mostra.</span>
               </h2>
 
-              <p className="text-base lg:text-lg text-white/60 font-light leading-relaxed border-l border-white/10 pl-6">
-                Sem método clínico, o tratamento vira apenas tentativa. O ciclo de frustração se repete.
+              <p className="text-base lg:text-lg text-[#e2e2e2] font-normal leading-relaxed border-l border-white/10 pl-6">
+                Tratar apenas a superfície é ignorar a raiz do problema. Cansaço, estresse e desequilíbrios internos aceleram o envelhecimento.
               </p>
             </motion.div>
           </div>
@@ -75,15 +75,15 @@ export function PainSection() {
                   className="group relative p-6 lg:p-8 hover:bg-white/5 transition-colors duration-300 border-b border-white/5 last:border-0"
                 >
                   <div className="flex items-start gap-4 lg:gap-6">
-                    <span className="font-mono text-[10px] lg:text-xs text-white/20 mt-1">
+                    <span className="font-mono text-[10px] lg:text-xs text-white/30 mt-1">
                       [ 0{i + 1} ]
                     </span>
                     <div className="flex-1">
-                      <h3 className="text-lg lg:text-xl font-light text-white/90 group-hover:text-white transition-colors">
+                      <h3 className="text-lg lg:text-xl font-normal text-[#e2e2e2] group-hover:text-white transition-colors">
                         {point}
                       </h3>
                     </div>
-                    <AlertCircle size={16} className="text-white/20 group-hover:text-red-400 transition-colors" />
+                    <AlertCircle size={16} className="text-white/30 group-hover:text-red-300 transition-colors" />
                   </div>
 
                   {/* Precision Crosshair on Hover */}
@@ -100,9 +100,9 @@ export function PainSection() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm font-mono uppercase tracking-wider text-white/60 hover:text-white transition-colors group"
+                className="flex items-center gap-3 text-sm font-mono uppercase tracking-wider text-[#e2e2e2] hover:text-white transition-colors group font-semibold"
               >
-                Interromper o ciclo
+                Agendar Consulta de Saúde
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </div>

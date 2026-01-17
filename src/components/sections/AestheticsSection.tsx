@@ -80,15 +80,11 @@ export function AestheticsSection() {
           </motion.div>
         </div>
 
-        {/* The Graph Visual - Responsive Scroll Container */}
-        <div className="relative w-full overflow-x-auto pb-4 hide-scrollbar">
-          {/* 
-                Mobile: Min-width ensures chart doesn't squish. 
-                User scrolls horizontally to see full timeline.
-            */}
-          <div className="relative h-[550px] min-w-[1000px] lg:min-w-full lg:w-full">
+        {/* The Graph Visual - Responsive Switcher */}
 
-            {/* Chart Area */}
+        {/* DESKTOP VIEW (Graph) - Hidden on Mobile */}
+        <div className="hidden lg:block relative w-full overflow-hidden pb-4">
+          <div className="relative h-[450px] w-full">
             <div className="absolute inset-x-0 top-0 h-[380px]">
               <svg
                 className="w-full h-full overflow-visible"
@@ -96,10 +92,6 @@ export function AestheticsSection() {
                 preserveAspectRatio="none"
               >
                 <defs>
-                  {/* 
-                            Continuous Flow Gradient
-                            Spans the entire width (0% to 100%) for a long beam.
-                        */}
                   <linearGradient id="long-beam-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="white" stopOpacity="0" />
                     <stop offset="30%" stopColor="white" stopOpacity="0.1" />
@@ -167,7 +159,7 @@ export function AestheticsSection() {
               </svg>
             </div>
 
-            {/* Text Labels */}
+            {/* Text Labels Desktop */}
             <div className="absolute top-[380px] inset-x-0 h-32 w-full">
               {milestones.map((m, i) => (
                 <div
@@ -175,19 +167,89 @@ export function AestheticsSection() {
                   className="absolute top-4 flex flex-col items-center text-center -translate-x-1/2"
                   style={{ left: `${(m.x / 1400) * 100}%`, width: '200px' }}
                 >
-                  <div className="inline-block px-2 py-0.5 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/50 mb-2">
+                  <div className="inline-block px-2 py-0.5 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-[#a3a3a3] mb-2">
                     SEMANA {m.week}
                   </div>
-                  <h3 className="text-base font-medium text-white mb-1">
+                  <h3 className="text-base font-medium text-[#e2e2e2] mb-1">
                     {m.label}
                   </h3>
-                  <p className="text-xs text-white/40 leading-relaxed max-w-[160px]">
+                  <p className="text-xs text-[#b3b3b3] leading-relaxed max-w-[160px] font-normal">
                     {m.desc}
                   </p>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
 
+        {/* MOBILE VIEW (Carousel Cards) - Hidden on Desktop */}
+        <div className="lg:hidden relative w-full">
+
+          <div
+            id="mobile-timeline-scroll"
+            className="overflow-x-auto pb-4 flex gap-4 px-8 snap-x snap-mandatory hide-scrollbar"
+            style={{ scrollPaddingLeft: '2rem', scrollPaddingRight: '2rem' }}
+          >
+            {milestones.map((m, i) => (
+              <div
+                key={i}
+                className="snap-center shrink-0 w-[75vw] h-48 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-start shadow-lg relative overflow-hidden group"
+              >
+                {/* Subtle Number Watermark instead of clock */}
+                <span className="absolute -right-2 -bottom-6 text-[8rem] font-display text-white/[0.03] leading-none select-none pointer-events-none">
+                  {m.week}
+                </span>
+
+                <span className="text-xs font-mono uppercase tracking-widest text-[#d4c5a8] mb-2 block relative z-10">
+                  Semana {m.week}
+                </span>
+                <h3 className="text-2xl font-display text-white mb-2 relative z-10">
+                  {m.label}
+                </h3>
+                <p className="text-sm text-[#a3a3a3] font-normal leading-relaxed max-w-[90%] relative z-10">
+                  {m.desc}
+                </p>
+
+                {/* Progress Bar for Visual Queue */}
+                <div className="absolute bottom-0 left-0 h-1 bg-white/10 w-full z-10">
+                  <div className="h-full bg-[#d4c5a8] transition-all duration-1000" style={{ width: `${((i + 1) / 3) * 100}%` }} />
+                </div>
+              </div>
+            ))}
+
+            {/* Spacer for proper scrolling */}
+            <div className="w-2 shrink-0" />
+          </div>
+
+          {/* Controls Below Cards */}
+          <div className="flex flex-col items-center gap-4 mt-2">
+            <div className="flex gap-6">
+              <button
+                onClick={() => {
+                  const container = document.getElementById('mobile-timeline-scroll');
+                  if (container) container.scrollBy({ left: -250, behavior: 'smooth' });
+                }}
+                className="w-12 h-12 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center border border-white/10 text-white active:scale-95 transition-all"
+                aria-label="Voltar"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+              </button>
+
+              <button
+                onClick={() => {
+                  const container = document.getElementById('mobile-timeline-scroll');
+                  if (container) container.scrollBy({ left: 250, behavior: 'smooth' });
+                }}
+                className="w-12 h-12 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center border border-white/10 text-white active:scale-95 transition-all"
+                aria-label="Avançar"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+              </button>
+            </div>
+
+            <span className="text-white/30 text-[10px] uppercase font-mono tracking-widest">
+              Use as setas ou deslize
+            </span>
           </div>
         </div>
       </div>

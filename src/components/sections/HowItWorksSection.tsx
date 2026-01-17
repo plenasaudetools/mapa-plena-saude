@@ -85,13 +85,13 @@ export function HowItWorksSection() {
 
                 {/* Text Side */}
                 <div className={`pl-16 lg:pl-0 lg:w-1/2 flex flex-col ${i % 2 === 0 ? 'lg:text-right lg:items-end' : 'lg:text-left lg:items-start'}`}>
-                  <div className="text-[40px] font-display text-white/10 leading-none mb-2">
+                  <div className="text-[40px] font-display text-white/20 leading-none mb-2">
                     {event.step}
                   </div>
-                  <h3 className="text-2xl font-medium text-white mb-3">
+                  <h3 className="text-2xl font-normal text-[#e2e2e2] mb-3">
                     {event.title}
                   </h3>
-                  <p className="text-white/50 leading-relaxed max-w-xs">
+                  <p className="text-[#a3a3a3] leading-relaxed max-w-xs font-normal">
                     {event.desc}
                   </p>
                 </div>
@@ -107,7 +107,7 @@ export function HowItWorksSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-100 group-hover:opacity-50 transition-opacity" />
 
                     <div className="absolute bottom-3 left-3">
-                      <event.icon className="text-white/70" size={20} />
+                      <event.icon className="text-white/80" size={20} />
                     </div>
                   </div>
                 </div>
@@ -124,9 +124,9 @@ export function HowItWorksSection() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/30 text-white text-sm uppercase tracking-widest transition-all duration-300"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/30 text-[#e2e2e2] text-sm uppercase tracking-widest transition-all duration-300 font-semibold"
           >
-            Iniciar Ciclo
+            Agendar Avaliação
             <ArrowRight size={16} />
           </a>
         </div>
